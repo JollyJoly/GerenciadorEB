@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/home/page.jsx';
 import Militares from './pages/militares/page.jsx';
-import Secoes from './pages/secoes/secoes.jsx';
+import Secoes from './pages/secoes/page.jsx';
 
 function App() {
     return (

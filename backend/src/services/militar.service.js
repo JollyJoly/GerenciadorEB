@@ -1,4 +1,4 @@
-import { Militar } from '../models/index.js'
+import { Militar, Secao, Trabalhando } from '../models/index.js'
 import { ApiError } from '../utils/apiError.js';
 
 export const militarService = {
@@ -7,14 +7,24 @@ export const militarService = {
     },
 
     async listarMilitares() {
-        const militares = await Militar.findAll();
+        const militares = await Militar.findAll({
+            include: [
+                {
+                    model: Secao,
+                    as: 'secoes',
+                    attributes: ['secao_id', 'nome'],
+                    through: { attributes: [] },
+                },
+            ],
+        });
 
         const militaresMap = militares.map(
             militar => ({
-                id: militar.id,
+                id: militar.militar_id,
                 post_grad: militar.post_grad,
                 nome_guerra: militar.nome_guerra,
-                identidade: militar.id_militar
+                identidade: militar.ident_militar,
+                secoes: militar.secoes
             })
         );
 

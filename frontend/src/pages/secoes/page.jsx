@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import API_URL from '../../services/api.js';
+import ReturnButton from "../../components/returnButton.jsx";
 
 export default function Secoes() {
     const [secoes, setSecoes] = useState([]);
@@ -45,6 +46,7 @@ export default function Secoes() {
 
     return (
         <main className="h-screen w-full flex justify-center items-center">
+            <ReturnButton />
             <div className="flex flex-col bg-[#749D68] w-1/3 h-3/4 rounded-2xl shadow-xl/30 overflow-hidden">
                 <h1 className="text-3xl w-full p-3 text-white font-bold border-b-3 bg-[#628857]">Seções</h1>
 

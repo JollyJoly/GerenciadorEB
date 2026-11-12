@@ -3,7 +3,16 @@ import { sequelize } from '../db/index.js';
 
 export class Secao extends Model {
   static associate(models) {
-    this.hasMany(models.Trabalhando, { foreignKey: 'cod_secao', sourceKey: 'secao_id' })
+    this.hasMany(models.Trabalhando, { foreignKey: 'cod_secao', sourceKey: 'secao_id' });
+
+    this.belongsToMany(models.Militar, {
+      through: models.Trabalhando,
+      foreignKey: 'cod_secao',
+      otherKey: 'cod_militar',
+      sourceKey: 'secao_id',
+      targetKey: 'militar_id',
+      as: 'militares',
+    });
   }
 }
 

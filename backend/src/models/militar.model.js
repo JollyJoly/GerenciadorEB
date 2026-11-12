@@ -4,7 +4,16 @@ import { POST_GRAD_ENUM } from '../enum/post_grad.enum.js';
 
 export class Militar extends Model {
   static associate(models) {
-    this.hasMany(models.Militar, { foreignKey: 'cod_militar', sourceKey: 'militar_id' })
+    this.hasMany(models.Trabalhando, { foreignKey: 'cod_militar', sourceKey: 'militar_id' })
+
+    this.belongsToMany(models.Secao, {
+      through: models.Trabalhando,
+      foreignKey: 'cod_militar',
+      otherKey: 'cod_secao',
+      sourceKey: 'militar_id',
+      targetKey: 'secao_id',
+      as: 'secoes',
+    });
   }
 }
 

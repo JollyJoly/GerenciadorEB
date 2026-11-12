@@ -10,7 +10,7 @@ export class Trabalhando extends Model {
 
 Trabalhando.init(
   {
-    id: {
+    trabalhando_id: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true,
