@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import API_URL from '../../services/api.js';
 import ReturnButton from "../../components/returnButton.jsx";
+import { Trash } from "lucide-react";
 
 export default function Secoes() {
     const [secoes, setSecoes] = useState([]);
@@ -44,6 +45,22 @@ export default function Secoes() {
         }
     }
 
+    async function deletarSecao(secaoId) {
+        try {
+            const res = await fetch(`${API_URL}/secoes/${secaoId}`, {
+                method: 'DELETE'
+            });
+
+            if (!res.ok) {
+                throw new Error('Erro ao deletar seção.')
+            }
+
+            listarSecoes()
+        } catch(erro) {
+            console.error("Erro ao realizar requisição: ", erro);   
+        }
+    }
+
     return (
         <main className="h-screen w-full flex justify-center items-center">
             <ReturnButton />
@@ -52,7 +69,11 @@ export default function Secoes() {
 
                 <ul className="flex-1 overflow-y-auto">
                     {secoes.map((secao, index) => (
-                        <li key={secao.id} className="text-xl w-full p-3 text-white border-b-3">
+                        <li key={secao.id} className="flex text-xl w-full p-3 text-white border-b-3">
+                            <button onClick={() => deletarSecao(secao.secao_id)}
+                                className="inline-flex items-center justify-center text-black mr-2 w-8 h-8 rounded-md cursor-pointer hover:bg-black/10">
+                                <Trash size={20} className="shrink-0" />
+                            </button>
                             {secao.nome}
                         </li>
                     ))}
