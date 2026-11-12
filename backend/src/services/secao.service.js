@@ -6,7 +6,7 @@ export const secaoService = {
         return await Secao.create(data);
     },
 
-    async listarSecaoes() {
+    async listarSecoes() {
         const secoes = await Secao.findAll();
 
         return secoes;

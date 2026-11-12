@@ -8,8 +8,8 @@ export const criarSecao = asyncHandler(async (req, res) => {
     sendSuccess(res, 201, secao, 'Secao criada com sucesso.');
 });
 
-export const listarSecaoes = asyncHandler(async (req, res) => {
-    const data = await secaoService.listarSecaoes();
+export const listarSecoes = asyncHandler(async (req, res) => {
+    const data = await secaoService.listarSecoes();
     sendSuccess(res, 200, data);
 });
 

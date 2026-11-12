@@ -2,6 +2,7 @@ import 'dotenv/config'
 import express from 'express';
 import { sequelize } from './src/db/index.js';
 import './src/models/index.js'
+import cors from 'cors';
 
 import militarRouter from './src/routes/militar.route.js';
 import secaoRouter from './src/routes/secao.route.js';
@@ -11,6 +12,7 @@ const app = express()
 const port = 3000
 
 app.use(express.json());
+app.use(cors());
 
 app.use('/militares', militarRouter);
 app.use('/secoes', secaoRouter);

@@ -1,14 +1,14 @@
 import { Router } from 'express';
 import {
   criarSecao,
-  listarSecaoes,
+  listarSecoes,
   buscarSecaoPorId,
   deletarSecao
 } from '../controllers/secao.controller.js';
 
 const secaoRouter = Router();
 secaoRouter.post('/', criarSecao);
-secaoRouter.get('/', listarSecaoes);
+secaoRouter.get('/', listarSecoes);
 secaoRouter.get('/secaoId', buscarSecaoPorId);
 secaoRouter.delete('/:secaoId', deletarSecao);
 
