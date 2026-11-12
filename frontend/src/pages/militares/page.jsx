@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import API_URL from '../../services/api.js';
 import ReturnButton from "../../components/returnButton.jsx";
+import { Link } from "react-router-dom";
+import { Trash, Pencil } from "lucide-react";
 
 export default function Militares() {
     const [militares, setMilitares] = useState([]);
@@ -63,42 +65,45 @@ export default function Militares() {
         }
     }
 
-    /*
-    async function adicionarMilitar() {
+    async function deletarMilitar(militarId) {
         try {
-            const res = await fetch(`${API_URL}/secoes`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    nome: nomeSecao
-                })
-            })
+            const res = await fetch(`${API_URL}/militares/${militarId}`, {
+                method: 'DELETE'
+            });
 
             if (!res.ok) {
-                throw new Error("Erro ao cadastrar seção.");
+                throw new Error('Erro ao deletar militar.')
             }
 
-            listarSecoes();
-            setNomeSecao("");
-        } catch (erro) {
-            console.error("Erro ao realizar requisição: ", erro);
+            listarMilitares()
+        } catch(erro) {
+            console.error("Erro ao realizar requisição: ", erro);   
         }
-    }*/
+    }
 
     return (
-        <main className="h-screen w-full flex justify-center items-center">
+        <main className="h-screen w-full flex flex-col justify-center items-center">
             <ReturnButton />
             <div className="flex flex-col bg-[#749D68] w-3/4 h-3/4 rounded-2xl shadow-xl/30 overflow-hidden text-left">
                 <table>
                     <tr className="text-2xl text-white font-bold border-b-3 bg-[#628857]">
+                        <th />
                         <th className="p-2 border-r-3">Post. Grad</th>
                         <th className="border-r-3 pl-2">Nome de guerra</th>
                         <th className="pl-2">Seções</th>
                     </tr>
                     {militares.map((militar, index) => (
                         <tr id={militar.id} className="text-xl w-full text-white border-b-3">
+                            <td className="flex items-center justify-center">
+                                <button className="cursor-pointer" onClick={() => deletarMilitar(militar.id)}>
+                                    <Trash size={30} className="mt-2 mr-3" />
+                                </button>
+                                <button className="cursor-pointer">
+                                    <Link to={`/update/${militar.id}`}>
+                                        <Pencil size={30} className="mt-2 mr-3" />
+                                    </Link>
+                                </button>
+                            </td>
                             <td className="p-2 border-r-3">{militar.post_grad}</td>
                             <td className="border-r-3 pl-2">{militar.nome_guerra}</td>
                             <td className="pl-2">
@@ -126,7 +131,13 @@ export default function Militares() {
                         </tr>
                     ))}
                 </table>
+            <button className="self-end bg-[#628857] text-white pt-2 pr-4 pb-2 pl-4 m-5 rounded-xl font-bold cursor-pointer hover:bg-[#496C3E]">
+                <Link to='/registro'>
+                    Registrar militar
+                </Link>
+            </button>
             </div>
+
         </main>
     )
 }
