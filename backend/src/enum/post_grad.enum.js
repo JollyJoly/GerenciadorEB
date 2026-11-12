@@ -1,0 +1,21 @@
+export const POST_GRAD_ENUM = Object.freeze({
+    SDEV: 'SDEV',
+    SDEP: 'SDEP',
+    CB: 'CB',
+    PSGT: '1SGT',
+    SSGT: '2SGT',
+    TSGT: '3SGT',
+    ST: 'ST',
+    CAD: 'CAD',
+    ASP: 'ASP',
+    PTEN: '1TEN',
+    STEN: '2TEN',
+    CAP: 'CAP',
+    MAJ: 'MAJ',
+    TC: 'TC',
+    CEL: 'CEL',
+    GENBDA: 'GENBDA',
+    GENDIV: 'GENDIV',
+    GENEX: 'GENEX',
+    MAR: 'MAR'
+});
