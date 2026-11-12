@@ -13,6 +13,11 @@ export const listarSecaoes = asyncHandler(async (req, res) => {
     sendSuccess(res, 200, data);
 });
 
+export const buscarSecaoPorId = asyncHandler(async (req, res) => {
+    const secao = await secaoService.buscarSecaoPorId(Number(req.params.secaoId));
+    sendSuccess(res, 200, secao);
+});
+
 export const deletarSecao = asyncHandler(async (req, res) => {
     await secaoService.deletarSecao(Number(req.params.secaoId));
     sendSuccess(res, 200, 'Secao deletada com sucesso.');

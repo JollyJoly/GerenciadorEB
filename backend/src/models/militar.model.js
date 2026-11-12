@@ -3,14 +3,14 @@ import { sequelize } from '../db/index.js';
 import { POST_GRAD_ENUM } from '../enum/post_grad.enum.js';
 
 export class Militar extends Model {
-
   static associate(models) {
+    this.hasMany(models.Militar, { foreignKey: 'cod_militar', sourceKey: 'militar_id' })
   }
 }
 
 Militar.init(
   {
-    id: {
+    militar_id: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true,
@@ -29,7 +29,7 @@ Militar.init(
         len: { args: [1, 20], msg: 'nome_guerra deve ter entre 1 e 20 caracteres' },
       },
     },
-    id_militar: {
+    ident_militar: {
       type: DataTypes.STRING(10),
       allowNull: false,
       validate: {

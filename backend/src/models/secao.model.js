@@ -2,14 +2,14 @@ import { DataTypes, Model } from 'sequelize';
 import { sequelize } from '../db/index.js';
 
 export class Secao extends Model {
-
   static associate(models) {
+    this.hasMany(models.Trabalhando, { foreignKey: 'cod_secao', sourceKey: 'secao_id' })
   }
 }
 
 Secao.init(
   {
-    id: {
+    secao_id: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true,

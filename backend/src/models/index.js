@@ -1,9 +1,11 @@
 import { Militar } from "./militar.model.js";
 import { Secao } from "./secao.model.js";
+import { Trabalhando } from './trabalhando.model.js';
 
 const models = {
     Militar,
-    Secao
+    Secao,
+    Trabalhando
 }
 
 Object.values(models).forEach((model) => {
@@ -14,7 +16,8 @@ Object.values(models).forEach((model) => {
 
 export {
     Militar,
-    Secao
+    Secao,
+    Trabalhando
 }
 
 export default models;
