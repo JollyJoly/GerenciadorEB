@@ -85,7 +85,7 @@ export default function Update() {
                 <input value={cpf} onChange={(e) => setCpf(e.target.value)} type="text" placeholder="CPF" className="outline-none p-2 border-t-2 border-white" />
                 <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder="E-mail" className="outline-none p-2 border-t-2 border-white" />
                 <input value={dataNasc} onChange={(e) => setDataNasc(e.target.value)} type="date" className="outline-none p-2 border-t-2 border-white" />
-                <select className="outline-none p-2 border-t-2 border-white">
+                <select value={postGrad} onChange={(e) => setPostGrad(e.target.value)} className="outline-none p-2 border-t-2 border-white">
                     <option>SDEV</option>
                     <option>SDEP</option>
                     <option>CB</option>
